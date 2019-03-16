@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 export const Context = React.createContext({});
 
-export default class Book extends React.Component {
+export default class User extends React.Component {
   render() {
     return (
       <Context.Provider
         value={{
-          name: "topthinking"
+          name: 'topthinking',
         }}
       >
         {this.props.children}

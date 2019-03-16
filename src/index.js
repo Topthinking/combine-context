@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import User from "../context/user";
-import Book from "../context/book";
-import Footer from "../component/footer";
-import "./styles.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import User from './context/user';
+import Book from './context/book';
+import Footer from './component/footer';
+import './styles.css';
 
 function App() {
   return (
@@ -19,5 +19,5 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);

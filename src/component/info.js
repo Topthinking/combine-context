@@ -1,9 +1,9 @@
-import React from "react";
-import combine from "../combine";
-import { Context as BookContext } from "../context/book";
-import { Context as UserContext } from "../context/user";
+import React from 'react';
+import combine from '../combine';
+import { Context as BookContext } from '../context/book';
+import { Context as UserContext } from '../context/user';
 
-class Footer extends React.Component {
+class Info extends React.Component {
   render() {
     return (
       <div>
@@ -22,9 +22,9 @@ class Footer extends React.Component {
 export default combine(
   {
     BookContext,
-    UserContext
+    UserContext,
   },
   {
-    BookContext: ["info"]
-  }
-)(Footer);
+    BookContext: ['info'],
+  },
+)(Info);

@@ -1,24 +1,24 @@
-import React from "react";
-import hoistNonReactStatics from "hoist-non-react-statics";
+import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 export default function(contexts, selectTypes) {
   const CombineContext = React.createContext({});
 
-  return Component => {
-    const Combine = class Consumer extends Component {
+  return (Component) => {
+    class Combine extends Component {
       static contextType = CombineContext;
-    };
+    }
 
     let i = 0;
     const consumers = {};
     const keys = Object.keys(contexts);
 
-    const createContextComponent = props => {
+    const createContextComponent = (props) => {
       const key = keys[i];
       const Context = contexts[key];
       return (
         <Context.Consumer>
-          {context => {
+          {(context) => {
             if (
               context &&
               selectTypes[key] &&
@@ -26,10 +26,11 @@ export default function(contexts, selectTypes) {
             ) {
               // 根据选择的type对Consumer的数据进行重写筛选
               const newContext = {};
-              selectTypes[key].map(item => {
+              selectTypes[key].map((item) => {
                 if (context[item]) {
                   newContext[item] = context[item];
                 }
+                return item;
               });
               consumers[key] = newContext;
             } else {
@@ -52,7 +53,7 @@ export default function(contexts, selectTypes) {
         </Context.Consumer>
       );
     };
-    const App = props => createContextComponent(props);
+    const App = (props) => createContextComponent(props);
 
     hoistNonReactStatics(App, Component);
 
